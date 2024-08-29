@@ -1,0 +1,105 @@
+@extends('learningdev.layouts.app')
+@section('stylesheets')
+<link rel="stylesheet" href="{{ asset('global/vendor/bootstrap-datepicker/bootstrap-datepicker.min.css')}}">
+<link rel="stylesheet" href="{{ asset('global/vendor/datatables-bootstrap/dataTables.bootstrap.css') }}">
+
+<link rel="stylesheet" href="{{ asset('global/vendor/bootstrap-toggle/css/bootstrap-toggle.min.css')}}">
+<link rel="stylesheet" href="{{ asset('global/vendor/alertify/alertify.min.css') }}">
+<link rel="stylesheet" href="{{ asset('global/vendor/morris/morris.css')}}">
+<link rel="stylesheet" href="../../../global/vendor/ladda/ladda.css">
+<style type="text/css">
+  .btn[disabled] {
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+</style>
+@endsection
+@section('content')
+<!-- Page -->
+<div class="page ">
+  <div class="page-header" style="height:220px; display:flex; align-items:center;">
+  <div>
+    <h1 class="page-title">Training Plan</h1>
+    <ol class="breadcrumb mt-2" style = "margin-top:8px !important;">
+      <li class="breadcrumb-item"><a href="{{url('/')}}">{{__('Home')}}</a></li>
+      <li class="breadcrumb-item "><a href="{{route('manager_dashboard')}}">Dashboard</a></li>
+    </ol>
+  </div>
+  
+    <div class="page-header-actions">
+      <div style="display: flex; flex-direction:row; justify-content:space-between;">
+        <div class="col-sm-6 col-xs-12">
+          
+        </div>
+        <div class="col-sm-6 col-xs-12">
+        
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-content container-fluid bg-white">    
+    <div class="panel panel-info panel-line">
+      <div class="panel-body">
+          @if(session()->has('message'))
+              <div class="alert alert-success">
+                  {{ session()->get('message') }}
+              </div>
+          @endif
+
+        <table class="table table-striped table-bordered" id="dataTable">
+          <thead>
+            <tr style = "background-color:#03A9F4 !important; padding:5px !important; color:white !important;">
+              <th>S/N</th>
+              @foreach($questions as $question)
+                    <th>{{$question}}</th>
+              @endforeach
+            </tr>
+          </thead>
+          <tbody>
+          
+            <tr id="">
+                <td>1</td>
+                <td></td>
+            </tr>
+                 
+          </tbody>
+        </table>
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+<!-- End Page -->
+
+
+@endsection
+@section('scripts')
+<script src="{{asset('global/vendor/bootstrap-table/bootstrap-table.min.js')}}"></script>
+<script src="{{asset('global/vendor/bootstrap-table/extensions/mobile/bootstrap-table-mobile.js')}}"></script>
+<script type="text/javascript" src="{{ asset('global/vendor/bootstrap-datepicker/bootstrap-datepicker.min.js')}}">
+</script>
+<script type="text/javascript" src="{{ asset('global/vendor/alertify/alertify.js') }}"></script>
+<script src="{{ asset('global/vendor/datatables/jquery.dataTables.js') }}"></script>
+<script src="{{ asset('global/vendor/datatables-fixedheader/dataTables.fixedHeader.js') }}"></script>
+<script src="{{ asset('global/vendor/datatables-bootstrap/dataTables.bootstrap.js') }}"></script>
+<script src="{{ asset('global/vendor/raphael/raphael-min.js')}}"></script>
+<script src="{{ asset('global/vendor/morris/morris.min.js')}}"></script>
+<script src="{{ asset('global/vendor/ladda/spin.min.js')}}"></script>
+<script src="{{ asset('global/vendor/ladda/ladda.min.js')}}"></script>
+<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/themes/material.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+@include('learningdev.includes.script')
+
+{{-- <script type="text/javascript" src="{{ asset('global/vendor/bootstrap-toggle/js/bootstrap-toggle.min.js')}}">
+</script>--}}
+<script type="text/javascript">
+
+</script>
+
+@endsection
